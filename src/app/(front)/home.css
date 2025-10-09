@@ -52,7 +52,7 @@
 }
 
 .hero-content p {
-    font-size: 2.1rem;
+    font-size: 1.95rem;
     color: #555;
     margin-bottom: 25px;
     font-weight: bolder;
@@ -364,9 +364,7 @@
     }
 }
 
-/* ================================
-   💬 FAQ SECTION
-==================================*/
+
 .faq-section {
     text-align: center;
     padding: 80px 10%;
