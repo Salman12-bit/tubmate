@@ -4,21 +4,15 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footerContainer}>
-        <ul className={styles.footerSection}>
-          <li><Link href="#">About Us</Link></li>
-          <li><Link href="/contact">Privacy Policy</Link></li>
-        </ul>
-        <div className={styles.footerSection}>
-          <p>Contact Us: contact@jigsawplanet.us</p>
-          <p>Phone: +92 336 3891016</p>
-        </div>
+    <div className='footer-containet'>
+      <ul className='footerSection'>
+        <li>Copyright © VeduApp.cc All Rights Reserved.</li>
+      </ul>
+      <div className='footerSection'>
+        <p>Contact Us: contact@jigsawplanet.us</p>
+        <p>Phone: +92 336 3891016</p>
       </div>
-      <div className={styles.footerBottom}>
-        &copy; 2024 Jigsawplanet.us All Rights Reserved.
-      </div>
-    </footer>
+    </div>
   );
 };
 
