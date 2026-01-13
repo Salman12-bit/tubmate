@@ -1,34 +1,30 @@
 .imgformat {
   background-size: cover;
   background-position: center;
-  margin-top: 70px;
+  margin-top: 50px;
   width: 100%;
   padding: 20px 0px;
-  margin-bottom: 17px;
   margin-right: 10px;
+  background-color: #1c2128;
 }
 
 .title {
   font-size: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   text-align: center;
+  color: white;
 }
 
 .content {
   display: flex;
   align-items: center;
   gap: 100px;
-}
-
-.imgContainer {
-  flex: 1;
-  height: 500px;
-  position: relative;
+  color: white;
 }
 
 .image {
   object-fit: contain;
-  /* animation: move 3s infinite ease alternate; */
+ 
 }
 
 @keyframes move {
@@ -56,8 +52,8 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: #000000;
-  border: 3px solid #000000;
+  color: #fcfcfc;
+  border: 3px solid #ffffff;
   font-size: 20px;
   font-weight: bold;
   width: 100%;
@@ -69,8 +65,8 @@
   background-color: transparent;
   border: none;
   outline: none;
-  color: #000000;
-  border: 3px solid #000000;
+  color: #ffffff;
+  border: 3px solid #ffffff;
   font-size: 20px;
   font-weight: bold;
   width: 100%;

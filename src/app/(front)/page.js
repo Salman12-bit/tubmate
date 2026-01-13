@@ -2,206 +2,265 @@
 
 import "./home.css";
 import Link from "next/link";
-
-
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  const sports = [
+    { name: "FOOTBALL", slug: "football", image: "/images/Football.webp" },
+    { name: "BASKETBALL", slug: "basketball", image: "/images/Basketball.webp" },
+    { name: "AMERICAN FOOTBALL", slug: "americanfootball", image: "/images/AmericanFootball.webp" },
+    { name: "CRICKET", slug: "cricket", image: "/images/Cricket.webp" },
+    { name: "HOCKEY", slug: "hockey", image: "/images/Hockey.webp" },
+    { name: "BASEBALL", slug: "baseball", image: "/images/Baseball.webp" },
+    { name: "MOTOR-SPORTS", slug: "motorsports", image: "/images/Motorsports.webp" },
+    { name: "FIGHT", slug: "fight", image: "/images/Fight.webp" },
+    { name: "TENNIS", slug: "tennis", image: "/images/Tennis.webp" },
+    { name: "RUGBY", slug: "rugby", image: "/images/Rugby.webp" },
+    { name: "GOLF", slug: "golfs", image: "/images/Golf.webp" },
+    { name: "BILLIARDS", slug: "billiars", image: "/images/Billiards.webp" },
+    { name: "AFL", slug: "afl", image: "/images/AFL.webp" },
+    { name: "DARTS", slug: "dart", image: "/images/Darts.webp" },
+    { name: "OTHERS", slug: "others", image: "/images/Others.webp" },
+  ];
+
+
+  const [viewCounts, setViewCounts] = useState({});
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem("view_counts");
+    if (stored) {
+      setViewCounts(JSON.parse(stored));
+    } else {
+      const init = {};
+      sports.forEach(s => (init[s.slug] = 0));
+      setViewCounts(init);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(viewCounts).length > 0) {
+      sessionStorage.setItem("view_counts", JSON.stringify(viewCounts));
+    }
+  }, [viewCounts]);
+
+  const handleCardClick = (slug) => {
+    const key = `watching_${slug}`;
+
+    if (!sessionStorage.getItem(key)) {
+      setViewCounts(prev => ({
+        ...prev,
+        [slug]: prev[slug] + 1,
+      }));
+
+      sessionStorage.setItem(key, "true");
+    }
+
+    router.push("/" + slug);
+  };
+
+  useEffect(() => {
+    const handleUnload = () => {
+      const stored = sessionStorage.getItem("view_counts");
+      if (!stored) return;
+
+      let counts = JSON.parse(stored);
+
+      sports.forEach(sport => {
+        const key = `watching_${sport.slug}`;
+        if (sessionStorage.getItem(key)) {
+          counts[sport.slug] = Math.max(counts[sport.slug] - 1, 0);
+          sessionStorage.removeItem(key);
+        }
+      });
+
+      sessionStorage.setItem("view_counts", JSON.stringify(counts));
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, []);
+
   return (
     <div className="home">
-      <section className="hero" id="home">
-        <div className="bg-shape bg-shape-right-top"></div>
-        <div className="bg-shape bg-shape-right-mid"></div>
+      <section className="categories">
+        <div className="category-grid">
 
-        <div className="hero-content">
-          <h1>Vedu App</h1>
-          <p className="sub-text">Unlimited TV Shows & Movies</p>
+          {sports.map(sport => (
+            <div
+              key={sport.slug}
+              className="category-card"
+              onClick={() => handleCardClick(sport.slug)}
+              style={{ cursor: "pointer" }}
+            >
+              <span className="badge hover-badge">
+                {viewCounts[sport.slug] ?? 0} 👁️
+              </span>
 
-
-          <div className="features-row">
-            <div className="feature-item">
-              <img
-                src="https://veduapp.cc/uploads/live-tv.webp"
-                alt="Live TV"
-              />
-              <span>Live TV</span>
+              <img src={sport.image} alt={sport.name} />
+              <p>{sport.name}</p>
             </div>
-            <div className="feature-item">
-              <img
-                src="https://veduapp.cc/uploads/movies.webp"
-                alt="Movies"
-              />
-              <span>Movies</span>
-            </div>
-            <div className="feature-item">
-              <img
-                src="https://veduapp.cc/uploads/tv-shows.webp"
-                alt="TV Shows"
-              />
-              <span>TV Shows</span>
-            </div>
-          </div>
+          ))}
 
-          <Link href="#" className="btn">
-            FREE DOWNLOAD NOW
-          </Link>
-
-
-          <div className="security-section">
-            <p className="verified">
-              <img
-                src="https://veduapp.cc/uploads/security-verified.webp"
-                alt="verified"
-              />
-              Security Verified
-            </p>
-
-            <div className="security-brands">
-              <div className="brand">
-                <img
-                  src="https://img.icons8.com/color/48/000000/security-checked.png"
-                  alt="CM Security"
-                />
-                <span>CM Security</span>
-              </div>
-              <div className="brand">
-                <img
-                  src="https://veduapp.cc/uploads/lookout.webp"
-                  alt="Lookout"
-                />
-                <span>Lookout</span>
-              </div>
-              <div className="brand">
-                <img
-                  src="https://veduapp.cc/uploads/mcafee.webp"
-                  alt="McAfee"
-                />
-                <span>McAfee</span>
-              </div>
-            </div>
-            {/* <p className="super-fast">Vedu APK 100% free Download. Get super-fast video downloads convert videos to MP3 enjoy HD player offline streaming and ad-free experience.</p> */}
-          </div>
-        </div>
-
-        <div className="hero-image">
-          <img
-            src="https://veduapp.cc/uploads/vedu-app.webp"
-            alt="App Preview"
-          />
         </div>
       </section>
-      <section className="about" id="aboutveduapp">
-        <h2>About Vedu App</h2>
+
+      <section className="passionate">
         <p>
-          In the modern age, getting high-quality content conveniently and without spending too much
-          money is difficult. Many applications are launched in the market to solve viewers’ problems.
-          But no one has been so successful in it as Vedu APK. This application provides users with
-          various features to make their video-watching experience unforgettable. The Vedu app has
-          changed the way users look at the content present on different social media platforms.
+          Looking for a dependable platform to enjoy live sports online without hassle?
+          <strong> Buffstreamz</strong> is designed for true sports fans who never want
+          to miss live action. Our smooth layout and fast-loading streams make watching
+          sports online simple and enjoyable.
+
+          From global cricket tournaments and top football leagues to NFL, NBA,
+          MMA, and more — Buffstreamz connects you to live sports from around the world.
+          Watch matches in high quality and stay in the game wherever you are.
+
+          Choose Buffstreamz today and elevate the way you experience live sports streaming.
         </p>
       </section>
-      <section id="features" className="key-features">
-        <h2>Key Features of Vedu App</h2>
 
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">
-              <img src="https://veduapp.cc/uploads/hd-quality.webp" alt="HD Quality" />
-            </div>
-            <div className="feature-text">
-              <h3>HD Quality</h3>
-            </div>
-          </div>
+      <section className="why-section">
 
-          <div className="feature-card">
-            <div className="feature-icon">
-              <img src="https://veduapp.cc/uploads/ad-free.webp" alt="Ad Free" />
-            </div>
-            <div className="feature-text">
-              <h3>Ad Free</h3>
-            </div>
-          </div>
+        <h2 className="why-title">
+          <span></span>
+          WHY BUFFSTREAMZ STANDS OUT
+          <span></span>
+        </h2>
 
-          <div className="feature-card">
-            <div className="feature-icon">
-              <img src="https://veduapp.cc/uploads/background-playback.webp" alt="Background Playback" />
-            </div>
-            <div className="feature-text">
-              <h3>Background Playback</h3>
+        <div className="why-wrapper">
+
+          <div className="why-item">
+            <div className="why-number">1</div>
+            <div className="why-box">
+              <h3>Complete Sports Streaming Hub</h3>
+              <p>
+                No matter which sport you follow — <strong>cricket</strong>,
+                <strong> football</strong>, <strong>basketball</strong>, or <strong>MMA</strong> —
+                Buffstreamz delivers live coverage across major leagues and events.
+                From international tournaments to professional championships,
+                everything is available in one place.
+              </p>
             </div>
           </div>
 
-          <div className="feature-card">
-            <div className="feature-icon">
-              <img src="https://veduapp.cc/uploads/offline-viewing.webp" alt="Offline Viewing" />
-            </div>
-            <div className="feature-text">
-              <h3>Offline Viewing</h3>
+          <div className="why-item">
+            <div className="why-number">2</div>
+            <div className="why-box">
+              <h3>High-Definition Streaming Experience</h3>
+              <p>
+                Enjoy live sports in clear <strong>HD quality</strong> with smooth playback.
+                Buffstreamz intelligently adjusts stream quality to match your connection,
+                ensuring minimal buffering and uninterrupted viewing.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-      <p className="upper-download">Features of Vedu App</p>
 
-      <section className="download-section" id="download">
-        <h2>HD and 4K Playback</h2>
-        <p>
-          One of the high demanding features in any video player is higher resolution.
-          Vedu is best for this as it allows you to play video in HD, 4K, or even in
-          ultra HD resolution. This makes colors contrast perfectly and enhanced visuals
-          ideal for all movie or video lovers. HDR10 and Dolby Vision are other advanced
-          features that Vedu APK supports for better color and perfect brightness.
-        </p>
+          <div className="why-item">
+            <div className="why-number">3</div>
+            <div className="why-box">
+              <h3>Real-Time Sports Information</h3>
+              <p>
+                Stay informed with up-to-date match schedules, live scores,
+                and key highlights. Buffstreamz keeps you connected to
+                every important sports moment as it happens.
+              </p>
+            </div>
+          </div>
 
-        <div className="download-image">
-          <img src="https://veduapp.cc/uploads/hd-and-4k-playback.webp" alt="Vedu App Screenshot" />
         </div>
-      </section>
-      <section className="download-section" id="download">
-        <h2>Customizable Library</h2>
-        <p>
-          In the built file manager in Vedu can make a playlist automatically based on the name,
-          date, or size of the video, you can also make your custom playlist by adding your
-          favorite videos. AI search suggestion allows you to search videos quickly.
-        </p>
 
-        <div className="download-image">
-          <img src="https://veduapp.cc/uploads/customizable-library.webp" alt="Vedu App Screenshot" />
-        </div>
-      </section>
-      <section className="download-section" id="download">
-        <h2>Support Many Languages</h2>
-        <p>
-          Vedu APK is designed to help users present worldwide. That’s why it supports
-          multiple languages. You can choose the language of the application according
-          to your needs. This makes users’ experience better and more convenient.
-        </p>
-
-        <div className="download-image">
-          <img src="https://veduapp.cc/uploads/support-many-languages.webp" alt="Vedu App Screenshot" />
-        </div>
       </section>
 
-      <section className="faq-section" id="faq">
-        <h2>FAQs</h2>
+      <section className="offer-section">
 
-        <div className="faq-box">
-          <span className="faq-icon">+</span>
-          <p>Is the Vedu app completely free?</p>
+        <h2 className="offer-title">
+          <span></span>
+          SPORTS YOU CAN WATCH
+          <span></span>
+        </h2>
+
+        <div className="offer-grid">
+
+          <div className="offer-card">
+            <strong>Cricket:</strong> Follow major leagues and tournaments including
+            <em> IPL</em>, <em>PSL</em>, <em>BPL</em>, and international series.
+          </div>
+
+          <div className="offer-card">
+            <strong>Football:</strong> Watch live action from top leagues such as
+            <em> Premier League</em>, <em>La Liga</em>, and other global competitions.
+          </div>
+
+          <div className="offer-card">
+            <strong>NFL & Basketball:</strong> Stream live
+            <em> NFL</em> games and exciting <em>NBA</em> fixtures in one place.
+          </div>
+
+          <div className="offer-card">
+            <strong>MMA & Boxing:</strong> Experience every round and knockout from
+            <em> UFC</em> fights and major boxing events worldwide.
+          </div>
+
+          <div className="offer-card">
+            <strong>Tennis & Ice Hockey:</strong> Enjoy live coverage from
+            <em> Grand Slam</em> tournaments and professional <em>NHL</em> games.
+          </div>
+
+          <div className="offer-card">
+            <strong>Motorsports:</strong> Watch high-speed races from
+            <em> Formula 1</em>, <em>NASCAR</em>, and <em>MotoGP</em>.
+          </div>
+
+          <div className="offer-card">
+            <strong>eSports:</strong> Stream competitive matches from popular titles
+            like <em>CS:GO</em>, <em>Valorant</em>, and <em>League of Legends</em>.
+          </div>
+
+          <div className="offer-card">
+            <strong>Golf:</strong> Follow live events from the
+            <em> PGA Tour</em> and international championships.
+          </div>
+
         </div>
 
-        <div className="faq-box">
-          <span className="faq-icon">+</span>
-          <p>Can parents control their children’s Vedu app?</p>
-        </div>
+      </section>
 
-        <div className="faq-box">
-          <span className="faq-icon">+</span>
-          <p>Is Vedu available on iOS?</p>
+      <section className="commit-section">
+        <div className="commit-box">
+          <h2>Our Promise to Sports Fans</h2>
+          <p>
+            <strong>Buffstreamz</strong> exists for fans who live and breathe sports.
+            Whether it’s a tense football showdown, an explosive UFC fight,
+            or a high-stakes basketball game, we bring the excitement directly to you.
+          </p>
+          <p>
+            We focus on performance, reliability, and viewer satisfaction.
+            With fast access to live games and stable streams, Buffstreamz
+            ensures you stay focused on the action — not the loading screen.
+          </p>
+          <p className="commit-highlight">
+            🚀 Sports never stop — and neither do we. Stream live with Buffstreamz.
+          </p>
+          <Link href="football" className="commit-btn">Watch Live Sports Now</Link>
         </div>
       </section>
 
+      <section className="experience-section">
+        <div className="experience-box">
+          <h2>Start Streaming with Buffstreamz</h2>
+          <p>
+            Thousands of sports enthusiasts rely on Buffstreamz for live streaming
+            every day. Whether you’re deeply invested in one sport or enjoy watching
+            them all, Buffstreamz gives you easy access to live sports anytime.
+          </p>
+        </div>
+      </section>
 
     </div>
   );
 }
+
 

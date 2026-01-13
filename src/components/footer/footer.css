@@ -1,5 +1,5 @@
 .footer-container {
-  background: #000;
+  background: #161C24;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -42,7 +42,7 @@
   right: 30px;
   width: 40px;
   height: 40px;
-  background: #ff2500;
+  background: #161C24;
   transform: rotate(45deg);
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@
 }
 
 .scroll-top:hover {
-  background: #e81f00;
+  background: #a7847e;
   transform: rotate(45deg) scale(1.1);
 }
 

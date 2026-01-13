@@ -1,6 +1,6 @@
 import React from "react";
 import "./contact.css"
-import Button from "@/components/Button/Button";
+
 
 
 const Contact = () => {
@@ -17,7 +17,7 @@ const Contact = () => {
             cols="30"
             rows="10"
           ></textarea>
-          <Button url="#" text="Send" />
+          
         </form>
         
       </div>
@@ -26,3 +26,7 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+
+

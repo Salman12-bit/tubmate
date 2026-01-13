@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-left">
-        <p>Copyright © VeduApp.cc All Rights Reserved.</p>
+        <p>Copyright © Buffstreams.us All Rights Reserved.</p>
       </div>
 
       <div className="footer-right">
@@ -32,7 +32,7 @@ export default function Footer() {
         <span>|</span>
         <a href="#">Disclaimer</a>
         <span>|</span>
-        <a href="#">Contact Us</a>
+        <a href="contact">Contact Us</a>
       </div>
 
       {visible && (

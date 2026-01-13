@@ -1,21 +1,68 @@
+import React from 'react';
+
 export const metadata = {
-    title: "Home - jigsaw planet",
-    description: "Welcome to jigsaw planet - the ultimate platform for puzzle lovers! Explore, play, and enjoy our vast selection of online jigsaw puzzles.",
+    title: "Buffstreamz: Free HD Live NFL, NBA, UFC & WWE Streaming",
+    description:
+        "Stream live sports in HD for free on Buffstreamz! Watch NFL, NBA, UFC, WWE, Soccer, Boxing & more with a smooth, user-friendly interface.",
     openGraph: {
-        title: "Home - Jigsaw Planet",
-        description: "Discover a world of puzzles on jigsawplanet! Start solving and sharing puzzles today, and join a community of puzzle enthusiasts.",
-        url: "https://jigsawplanet.us",
+        title: "Buffstreamz: Free HD Live NFL, NBA, UFC & WWE Streaming",
+        description:
+            "Stream live sports in HD for free on Buffstreamz! Watch NFL, NBA, UFC, WWE, Soccer, Boxing & more with a smooth, user-friendly interface.",
+        url: "https://buffstreamz.cyou/",
         images: [
             {
-                url: "https://jigsawplanet.us/images/jigsaw-planet-home.jpg",
+                url: "https://buffstreamz.cyou/images/preview.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Explore and play puzzles on jigsaw planet",
+                alt: "Buffstreamz - Watch NFL, NBA, UFC, WWE live in HD",
             },
         ],
+    },
+    alternates: {
+        canonical: "https://buffstreamz.cyou/",
     },
 };
 
 export default function Layout({ children }) {
-    return <>{children}</>;
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Buffstreamz: Free HD Live NFL, NBA, UFC & WWE Streaming",
+        "url": "https://buffstreamz.cyou/",
+        "description":
+            "Stream live sports in HD for free on Buffstreamz! Watch NFL, NBA, UFC, WWE, Soccer, Boxing & more with a smooth, user-friendly interface.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://buffstreamz.cyou/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Buffstreamz",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://buffstreamz.cyou/favicon.webp",
+                "width": 500,
+                "height": 500,
+            },
+        },
+        "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://buffstreamz.cyou/images/preview.jpg",
+            "width": 1200,
+            "height": 630,
+        },
+    };
+
+    return (
+        <>
+            {children}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(structuredData),
+                }}
+            />
+        </>
+    );
 }
