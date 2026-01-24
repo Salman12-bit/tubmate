@@ -25,10 +25,10 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post.title,
-    description: "Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreams.",
+    description: "Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
     openGraph: {
       title: post.title,
-      description:"Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreams.",
+      description:"Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
       url: `https://buffstreamz.cyou/posts/${params.id}`,
       images: [
         {
