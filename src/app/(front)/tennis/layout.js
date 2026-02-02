@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Tennis Matches - Live & Upcoming",
         description:
             "Watch all Tennis matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite players.",
-        url: "https://buffstreamz.cyou/tennismatches",
+        url: "https://buffstreamz.cyou/tennis",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Tennis.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/tennismatches",
+        canonical: "https://buffstreamz.cyou/tennis",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Tennis Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/tennismatches",
+        "url": "https://buffstreamz.cyou/tennis",
         "description":
             "Tennis streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

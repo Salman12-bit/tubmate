@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Billiards Matches - Live & Upcoming",
         description:
             "Watch all Billiards matches live and upcoming on Buffstreamz. Stream games in HD with advanced filtering for your favorite players.",
-        url: "https://buffstreamz.cyou/billiardmatches",
+        url: "https://buffstreamz.cyou/billiars",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Billiards.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/billiardmatches",
+        canonical: "https://buffstreamz.cyou/billiars",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Billiards Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/billiardmatches",
+        "url": "https://buffstreamz.cyou/billiars",
         "description":
             "Billiards streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Darts Matches - Live & Upcoming",
         description:
             "Watch all Darts matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite players.",
-        url: "https://buffstreamz.cyou/dartsmatches",
+        url: "https://buffstreamz.cyou/dart",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Darts.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/dartsmatches",
+        canonical: "https://buffstreamz.cyou/dart",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Darts Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/dartsmatches",
+        "url": "https://buffstreamz.cyou/dart",
         "description":
             "Darts streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

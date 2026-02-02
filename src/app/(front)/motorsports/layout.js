@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Motorsports Matches - Live & Upcoming",
         description:
             "Watch all Motorsports events live and upcoming on Buffstreamz. Stream races in HD with schedule updates and advanced filtering for your favorite drivers and teams.",
-        url: "https://buffstreamz.cyou/motorsportmatches",
+        url: "https://buffstreamz.cyou/motorsports",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Motorsports.webp", 
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/motorsportmatches",
+        canonical: "https://buffstreamz.cyou/motorsports",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Motor Sports Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/motorsportmatches",
+        "url": "https://buffstreamz.cyou/motorsports",
         "description":
             "Motor Sports streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Fight Matches - Live & Upcoming",
         description:
             "Watch all Fight matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite fighters.",
-        url: "https://buffstreamz.cyou/fightmatches",
+        url: "https://buffstreamz.cyou/fight",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Fight.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/fightmatches",
+        canonical: "https://buffstreamz.cyou/fight",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Fight Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/fightmatches",
+        "url": "https://buffstreamz.cyou/fight",
         "description":
             "Fight streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

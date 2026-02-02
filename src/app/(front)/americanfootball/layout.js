@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou American Football Matches - Live & Upcoming",
         description:
             "Watch all American Football matches live and upcoming on Buffstreamz. Stream games in HD with advanced filtering for your favorite teams.",
-        url: "https://buffstreamz.cyou/americanfootballmatches",
+        url: "https://buffstreamz.cyou/americanfootball",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/AmericanFootball.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/americanfootballmatches",
+        canonical: "https://buffstreamz.cyou/americanfootball",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "American Football Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/americanfootballmatches",
+        "url": "https://buffstreamz.cyou/americanfootball",
         "description":
             "American Football streaming page showing live and upcoming games on Buffstreamz.",
         "about": {

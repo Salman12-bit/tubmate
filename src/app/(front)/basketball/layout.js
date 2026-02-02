@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Basketball Matches - Live & Upcoming",
         description:
             "Watch all Basketball matches live and upcoming on Buffstreamz. Stream games in HD with advanced filtering for your favorite teams.",
-        url: "https://buffstreamz.cyou/basketballmatches",
+        url: "https://buffstreamz.cyou/basketball",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Basketball.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/basketballmatches",
+        canonical: "https://buffstreamz.cyou/basketball",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Basketball Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/basketballmatches",
+        "url": "https://buffstreamz.cyou/basketball",
         "description":
             "Basketball streaming page showing live and upcoming games on Buffstreamz.",
         "about": {

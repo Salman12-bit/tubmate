@@ -8,7 +8,7 @@ export const metadata = {
     title: "Buffstreamz.cyou Golf Matches - Live & Upcoming",
     description:
       "Watch all Golf matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite players.",
-    url: "https://buffstreamz.cyou/golfmatches",
+    url: "https://buffstreamz.cyou/golfs",
     images: [
       {
         url: "https://buffstreamz.cyou/images/Golf.webp", 
@@ -19,7 +19,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: "https://buffstreamz.cyou/golfmatches",
+    canonical: "https://buffstreamz.cyou/golfs",
   },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Golf Live Streams on Buffstreamz",
-    "url": "https://buffstreamz.cyou/golfmatches",
+    "url": "https://buffstreamz.cyou/golfs",
     "description":
       "Golf streaming page showing live and upcoming matches on Buffstreamz.",
     "about": {

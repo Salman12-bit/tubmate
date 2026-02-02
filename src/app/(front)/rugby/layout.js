@@ -8,7 +8,7 @@ export const metadata = {
         title: "Buffstreamz.cyou Rugby Matches - Live & Upcoming",
         description:
             "Watch all Rugby matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite teams.",
-        url: "https://buffstreamz.cyou/rugbymatches",
+        url: "https://buffstreamz.cyou/rugby",
         images: [
             {
                 url: "https://buffstreamz.cyou/images/Rugby.webp",
@@ -19,7 +19,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://buffstreamz.cyou/rugbymatches",
+        canonical: "https://buffstreamz.cyou/rugby",
     },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "Rugby Live Streams on Buffstreamz",
-        "url": "https://buffstreamz.cyou/rugbymatches",
+        "url": "https://buffstreamz.cyou/rugby",
         "description":
             "Rugby streaming page showing live and upcoming matches on Buffstreamz.",
         "about": {

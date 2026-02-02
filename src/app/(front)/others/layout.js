@@ -8,7 +8,7 @@ export const metadata = {
     title: "Buffstreamz.cyou Other Sports Matches - Live & Upcoming",
     description:
       "Watch all other sports matches live and upcoming on Buffstreamz. Stream games in HD with schedule updates and advanced filtering for your favorite events.",
-    url: "https://buffstreamz.cyou/othermatches",
+    url: "https://buffstreamz.cyou/others",
     images: [
       {
         url: "https://buffstreamz.cyou/images/Others.webp", 
@@ -19,7 +19,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: "https://buffstreamz.cyou/othermatches",
+    canonical: "https://buffstreamz.cyou/others",
   },
 };
 
@@ -28,7 +28,7 @@ export default function Layout({ children }) {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Others Live Streams on Buffstreamz",
-    "url": "https://buffstreamz.cyou/othermatches",
+    "url": "https://buffstreamz.cyou/others",
     "description":
       "Others streaming page showing live and upcoming matches on Buffstreamz.",
     "about": {
