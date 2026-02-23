@@ -26,8 +26,9 @@ export default function Home() {
     { name: "OTHERS", slug: "others", image: "/images/Others.webp" },
   ];
 
-
   const [viewCounts, setViewCounts] = useState({});
+  const [currentTime, setCurrentTime] = useState(new Date());
+
 
   useEffect(() => {
     const stored = sessionStorage.getItem("view_counts");
@@ -39,6 +40,7 @@ export default function Home() {
       setViewCounts(init);
     }
   }, []);
+
 
   useEffect(() => {
     if (Object.keys(viewCounts).length > 0) {
@@ -60,6 +62,7 @@ export default function Home() {
 
     router.push("/" + slug);
   };
+
 
   useEffect(() => {
     const handleUnload = () => {
@@ -83,11 +86,32 @@ export default function Home() {
     return () => window.removeEventListener("beforeunload", handleUnload);
   }, []);
 
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const formatGlobalTime = (date) => {
+    const pk = date.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true, timeZone: "Asia/Karachi" });
+    const et = date.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true, timeZone: "America/New_York" });
+    const gmt = date.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true, timeZone: "GMT" });
+    return `PK ${pk} | USA ${et} | 🌐 ${gmt}`;
+  };
+
   return (
     <div className="home">
+
+
+      <div className="global-watch-corner">
+        ⏰ {formatGlobalTime(currentTime)} PKT
+      </div>
+
       <section className="categories">
         <div className="category-grid">
-
           {sports.map(sport => (
             <div
               key={sport.slug}
@@ -103,10 +127,8 @@ export default function Home() {
               <p>{sport.name}</p>
             </div>
           ))}
-
         </div>
       </section>
-
       <section className="passionate">
         <p>
           Looking for a dependable platform to enjoy live sports online without hassle?
@@ -262,5 +284,3 @@ export default function Home() {
     </div>
   );
 }
-
-

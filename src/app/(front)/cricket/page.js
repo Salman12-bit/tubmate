@@ -38,7 +38,24 @@ export default function Cricketpage() {
       console.log(err);
     }
   };
+  const isLiveMatch = (matchDate, time) => {
+    const matchStart = new Date(`${matchDate} ${time}`);
+    const now = new Date();
+    const today = new Date();
 
+    const isToday =
+      matchStart.getFullYear() === today.getFullYear() &&
+      matchStart.getMonth() === today.getMonth() &&
+      matchStart.getDate() === today.getDate();
+
+    if (!isToday) return false;
+
+    const endTime = new Date(
+      matchStart.getTime() + 4 * 60 * 60 * 1000
+    );
+
+    return now >= matchStart && now <= endTime;
+  };
 
   const filteredMatches = data
     .filter((post) =>
@@ -55,6 +72,13 @@ export default function Cricketpage() {
       return (timeFilter === "AM" && isAM) || (timeFilter === "PM" && isPM);
     })
     .sort((a, b) => {
+      const aLive = isLiveMatch(a.matchDate, a.time);
+      const bLive = isLiveMatch(b.matchDate, b.time);
+
+
+      if (aLive && !bLive) return -1;
+      if (!aLive && bLive) return 1;
+
 
       const dateA = new Date(`${a.matchDate} ${a.time}`);
       const dateB = new Date(`${b.matchDate} ${b.time}`);
@@ -125,6 +149,9 @@ export default function Cricketpage() {
                 <div className="card-wrapper" key={post._id}>
                   <Link href={`/${post._id}`}>
                     <div className="match-card">
+                      {isLiveMatch(post.matchDate, post.time) && (
+                        <div className="live-badge">LIVE</div>
+                      )}
                       <div className="match-date">{month} {dayNum}</div>
                       <div className="match-star">★</div>
                       <div className="match-flags image-bg">

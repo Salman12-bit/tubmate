@@ -13,6 +13,8 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google-site-verification" content="jx5k8JHVr336GkYA7eOhf5UVnbtoC_wmbY0Y5CnlVsw" />
         <link rel="icon" type="image/png" href="/favicon.webp" />
+
+        <script data-cfasync="false" src="//d2f5h9m0jmnhjh.cloudfront.net/?jmhfd=1244638"></script>
       </head>
 
       <body className={inter.className}>

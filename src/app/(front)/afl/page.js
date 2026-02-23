@@ -38,8 +38,25 @@ export default function AFLpage() {
       console.log(err);
     }
   };
+  const isLiveMatch = (matchDate, time) => {
+    const matchStart = new Date(`${matchDate} ${time}`);
+    const now = new Date();
+    const today = new Date();
 
-  
+    const isToday =
+      matchStart.getFullYear() === today.getFullYear() &&
+      matchStart.getMonth() === today.getMonth() &&
+      matchStart.getDate() === today.getDate();
+
+    if (!isToday) return false;
+
+    const endTime = new Date(
+      matchStart.getTime() + 4 * 60 * 60 * 1000
+    );
+
+    return now >= matchStart && now <= endTime;
+  };
+
   const filteredMatches = data
     .filter((post) =>
       ["afl", "nrl", "gaa", "australian football"].some(
@@ -55,12 +72,19 @@ export default function AFLpage() {
       return (timeFilter === "AM" && isAM) || (timeFilter === "PM" && isPM);
     })
     .sort((a, b) => {
+      const aLive = isLiveMatch(a.matchDate, a.time);
+      const bLive = isLiveMatch(b.matchDate, b.time);
+
+
+      if (aLive && !bLive) return -1;
+      if (!aLive && bLive) return 1;
+
 
       const dateA = new Date(`${a.matchDate} ${a.time}`);
       const dateB = new Date(`${b.matchDate} ${b.time}`);
       return dateA - dateB;
     });
-  
+
   const groupByDate = (posts) => {
     return posts.reduce((groups, post) => {
       const dateKey = new Date(post.matchDate).toDateString();
@@ -74,7 +98,7 @@ export default function AFLpage() {
 
   if (err) return <p>Error loading matches.</p>;
 
-  
+
   const sortedDates = Object.keys(grouped).sort((a, b) => {
     return new Date(a) - new Date(b);
   });
@@ -124,6 +148,9 @@ export default function AFLpage() {
                 <div className="card-wrapper" key={post._id}>
                   <Link href={`/${post._id}`}>
                     <div className="match-card">
+                      {isLiveMatch(post.matchDate, post.time) && (
+                        <div className="live-badge">LIVE</div>
+                      )}
                       <div className="match-date">{month} {dayNum}</div>
                       <div className="match-star">★</div>
                       <div className="match-flags image-bg">
