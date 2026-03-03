@@ -1,11 +1,12 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+
 Disallow: /admin/
 Disallow: /checkout/
+Disallow: /api/
+Disallow: /_next/
 
 Sitemap: https://buffstreamz.cyou/sitemap.xml
-
-
 
 

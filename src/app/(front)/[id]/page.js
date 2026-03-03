@@ -17,6 +17,10 @@ export async function generateMetadata({ params }) {
     return {
       title: "Match Not Found",
       description: "This match could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
       alternates: {
         canonical: "https://buffstreamz.cyou/404",
       },
@@ -25,11 +29,19 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post.title,
-    description: "Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
+    description:
+      "Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
+
+    robots: {
+      index: false,
+      follow: true,
+    },
+
     openGraph: {
       title: post.title,
-      description:"Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
-      url: `https://buffstreamz.cyou/posts/${params.id}`,
+      description:
+        "Watch live sports streams in HD quality. Enjoy fast, secure, and free live match streaming with real-time updates on BuffStreamz.",
+      url: `https://buffstreamz.cyou/${params.id}`,
       images: [
         {
           url: post.image || "/default.webp",
@@ -39,8 +51,9 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
+
     alternates: {
-      canonical: `https://buffstreamz.cyou/posts/${params.id}`,
+      canonical: `https://buffstreamz.cyou/${params.id}`,
     },
   };
 }
